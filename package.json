@@ -1,0 +1,23 @@
+{
+  "name": "labs",
+  "version": "1.0.0",
+  "description": "I.A.P Lab exercises",
+  "main": "lab1.php",
+  "dependencies": {
+    "sass": "^1.26.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+   "compile:sass":"node-sass sass/main.scss /style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eugeneIkonya/labs.git"
+  },
+  "author": "Eugene Ikonya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eugeneIkonya/labs/issues"
+  },
+  "homepage": "https://github.com/eugeneIkonya/labs#readme"
+}

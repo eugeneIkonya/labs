@@ -12,10 +12,14 @@
         $first_name=$_POST['first_name'];
         $last_name=$_POST['last_name'];
         $city_name=$_POST['city_name'];
+
         $username=$_POST['username'];
         $password=$_POST['password'];
 
-        $user = new User($first_name,$last_name,$city_name,$username,$password);
+        $utc_timestamp = $_POST['utc_timestamp'];
+        $offset = $_POST['time_zone_offset'];
+
+        $user = new User($first_name,$last_name,$city_name,$username,$password,$utc_timestamp,$offset);
         
         if(!$user->validateForm()){
             $user->validateFormErrorSessions();
@@ -44,6 +48,8 @@
         <link href="style.css" rel="stylesheet">
     </head>
     <script src="script.js" async defer></script>
+    <script src="timezone.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <body>
     <div class="heading">
         <h1 class="heading">I.A.P Lab Exercises</h1>
@@ -80,6 +86,9 @@
              
                         <label for="password">Password :</label>
                         <input type="password" name="password" placeholder="Password"><br><br>
+
+                        <input type="hidden" name="utc_timestamp" id="utc_timestamp" value=""><br>
+                        <input type="hidden" name="time_zone_offset" id="time_zone_offset" value=""><br>
                
                         <button type="submit" class="btn" name="btn-save"><strong>Save</strong></button>
                 

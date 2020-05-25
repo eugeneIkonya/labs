@@ -15,6 +15,11 @@
            //lab 2 part 2
            private $username;
            private $password;
+
+           //lab3
+           private $utc_timestamp;
+           private $time_zone_offset;
+
         
 
            public function create(){
@@ -23,12 +28,14 @@
             return $instance;
         }
 
-           function __construct($first_name,$last_name,$city_name,$username,$password){
+           function __construct($first_name,$last_name,$city_name,$username,$password,$utc_timestamp,$time_zone_offset){
                $this->first_name=$first_name;
                $this->last_name=$last_name;
                $this->city_name=$city_name;
                $this->username=$username;
                $this->password=$password;
+               $this->utc_timetable=$utc_timestamp;
+               $this->time_zone_offset=$time_zone_offset;
            }
 
          
@@ -53,13 +60,13 @@
                return $this->user_id;
            }
            public function isUserExists(){
-                $found=false;
-                $this->DBConnect();//connecting to the database
-                $sql="SELECT * FROM user ";//query to select the usernames from the dbase
-                $result=mysqli_query($this->con->conn,$sql);//executing the database selection
-                while($rows=mysqli_fetch_assoc($result)){
-                        if($rows['username']==$this->getUsername()){
-                            $found=true;
+                $found = false;
+                $this->DBConnect(); //connecting to the database
+                $sql = " SELECT * FROM user ";//query to select the usernames from the dbase
+                $result = mysqli_query($this->con->conn, $sql);//executing the database selection
+                while($rows = mysqli_fetch_assoc($result)){
+                        if($rows[ 'username' ] == $this->getUsername()){
+                            $found = true;
                             break;
                         }
                   }
@@ -69,17 +76,17 @@
            public function save(){
                $this->DBConnect();
 
-               $fn=$this->first_name;
-               $ln=$this->last_name;
-               $city=$this->city_name;
-               $uname=$this->username;
-               $pass=$this->password;
+               $fn = $this->first_name;
+               $ln = $this->last_name;
+               $city = $this->city_name;
+               $uname = $this->username;
+               $pass = $this->password;
+               $utc_time = $this->utc_timestamp;
+               $offset = $this->time_zone_offset;
 
-               $res=mysqli_query($this->con->conn,"INSERT into user(first_name,last_name,user_city,username,password) 
-                                                        VALUES ('$fn','$ln','$city','$uname','$pass')") or die("Error:");
-              
-               
-               
+               $res=mysqli_query($this->con->conn,"INSERT into user(first_name,last_name,user_city,username,password,utc_timestamp,time_zone_offset) 
+                                                        VALUES ('$fn', '$ln' , '$city' , '$uname', '$pass', '$utc_time' , '$offset' )") or die( " Error : " );
+                
                $this->DBClose();
                return $res;
            }

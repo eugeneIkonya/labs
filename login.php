@@ -35,25 +35,15 @@
     <div class="login-form">
         <!-- =$SERVER['PHP_SELF']means that the form is submitting this form to itself for processing -->
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post" name="login" id="login" onsubmit="return loginValidate()">
-            <table class="tbl-login">
-                <tr>
-                    <td>
-                        <label for="username">Username :</label>
-                        <input type="text" name="username" placeholder="Username" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="password">Password :</label>
-                        <input type="password" name="password" placeholder="Password" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+            
+                        <label for="username" class = "login-label" > Username :</label>
+                        <input type="text" name="username" class="login-label" placeholder="Username" required>
+                
+                        <label for="password" class="login-label"> Password :</label>
+                        <input type="password" name="password" class=" login-input " placeholder="Password" required>
+                
                         <button type="submit" class="btn" name="btn-login">Login </button>
-                    </td>
-                </tr>
-            </table>
+              
         </form>
     </div>
     
